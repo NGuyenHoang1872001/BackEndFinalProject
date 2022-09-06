@@ -11,7 +11,6 @@ const register = async (req, res) => {
     const findEmail = await UserModel.findOne({ email });
     if (findEmail) return res.status(400).send("Email Existed");
     const hashPasword = await bcrypt.hash(password);
-    const newUser = { email, password: hashPasword, firstName, lastName };
     const user = await UserModel.create({
       email,
       password: hashPasword,
@@ -36,7 +35,7 @@ const login = async (req, res) => {
     //   return res.status(400).send("email and password please");
 
     const user = await UserModel.findOne({ email });
-    if (!user) return res.sendStatus(400);
+    if (!user) return res.sendStatus(404);
     const invalidPassword = comparePassword(pasword, user.password);
     if (!invalidPassword) return res.sendStatus(400);
 
