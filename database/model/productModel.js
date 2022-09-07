@@ -4,6 +4,7 @@ const ProductModel = new Schema(
   {
     title: { type: String, required: true },
     cover: { type: String, required: true },
+    price: { type: Number, required: true },
     storeId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

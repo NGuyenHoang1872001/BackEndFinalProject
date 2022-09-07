@@ -3,6 +3,7 @@ var router = express.Router();
 const authController = require("../../controller/AutherController");
 const postController = require("../../controller/PostController");
 const storeController = require("../../controller/StoreController");
+const productController = require("../../controller/ProductController");
 
 router.post("/register", authController.register);
 
@@ -17,5 +18,10 @@ router.post("/createStore", storeController.createStore);
 router.get("/getStore", storeController.getAllStore);
 router.put("/updateStore/:storeId", storeController.updateStore);
 router.delete("/deleteStore/:storeId", storeController.deleteStore);
+
+router.post("/createProduct", productController.createProduct);
+router.get("/getProduct", productController.getAllProduct);
+router.put("/updateProduct/:productId", productController.updateProduct);
+router.delete("/deleteProduct/:productId", productController.deleteProduct);
 
 module.exports = router;
