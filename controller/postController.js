@@ -11,4 +11,21 @@ const createPost = async (payload) => {
   return newPost;
 };
 
-module.exports = { createPost };
+const getPost = async () => {
+  const getAllPost = PostMode.find({});
+  return getAllPost;
+};
+
+const updatePost = async (postId, option) => {
+  const update = PostMode.findByIdAndUpdate(postId, option);
+  return update;
+};
+
+const deletePost = async (postId) => {
+  try {
+    const deleteAPost = await PostMode.findByIdAndDelete(postId);
+    return deleteAPost;
+  } catch (error) {}
+};
+
+module.exports = { createPost, getPost, updatePost, deletePost };
