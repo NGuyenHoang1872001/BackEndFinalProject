@@ -1,10 +1,10 @@
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
-const storeModel = new Schema(
+const StoreModel = new Schema(
   {
     title: { type: String, required: true },
     cover: { type: String, required: true },
-    userId: {
+    ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
       ref: "User",
