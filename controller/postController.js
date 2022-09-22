@@ -4,10 +4,10 @@ const postRepository = require("../repositories/PostRepository");
 
 const createPost = async (req, res) => {
   try {
-    const { title, cover, author } = req.body;
+    const { title, cover, author, store } = req.body;
     const findUser = await UserMode.findById(author);
     if (!findUser) return res.send(400);
-    const payload = { title, cover, author };
+    const payload = { title, cover, author, store };
 
     const response = await postRepository.createPost(payload);
     return res.send(response);

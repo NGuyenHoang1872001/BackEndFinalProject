@@ -9,6 +9,11 @@ const PostModel = new Schema(
       required: true,
       ref: "User",
     },
+    store: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

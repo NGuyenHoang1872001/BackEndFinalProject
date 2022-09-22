@@ -49,9 +49,18 @@ const deleteProduct = async (req, res) => {
   return res.status(200).send("delete successfull");
 };
 
+const getProductStore = async (req, res) => {
+  const { storeId } = req.params;
+  const findStore = await StoreModel.findById(storeId);
+  if (!findStore) return res.sendStatus(400);
+  const getProduct = await productRepository.getProductStore(storeId);
+  return res.status(200).send(getProduct);
+};
+
 module.exports = {
   createProduct,
   getAllProduct,
   updateProduct,
   deleteProduct,
+  getProductStore,
 };

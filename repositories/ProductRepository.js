@@ -24,4 +24,14 @@ const deleteProduct = async (productId) => {
   } catch (error) {}
 };
 
-module.exports = { createProduct, getProduct, updateProduct, deleteProduct };
+const getProductStore = async (storeId) => {
+  const getProductInStore = ProductModel.find({ storeId });
+  return getProductInStore;
+};
+module.exports = {
+  createProduct,
+  getProduct,
+  updateProduct,
+  deleteProduct,
+  getProductStore,
+};

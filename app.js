@@ -13,7 +13,11 @@ var cors = require("cors");
 var routerAPIUser = require("./routes/RouterAPI/routerUser");
 var app = express();
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+  })
+);
 
 const swaggerDefinition = {
   openapi: "3.0.0",

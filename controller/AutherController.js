@@ -45,7 +45,7 @@ const login = async (req, res) => {
     };
 
     const token = jwt.sign(payload, process.env.JWR_SECRET_KEY);
-    return res.status(200).send(token);
+    return res.status(200).send({ token, payload });
   } catch (error) {
     console.log(
       "🚀 ~ file: AuthController.js ~ line 36 ~ login ~ error",

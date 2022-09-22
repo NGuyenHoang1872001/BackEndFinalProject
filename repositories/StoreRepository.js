@@ -11,7 +11,7 @@ const createStore = async (payload) => {
   return newStore;
 };
 
-const getStore = async () => {
+const getAllStore = async () => {
   const getAllStore = StoreModel.find({});
   return getAllStore;
 };
@@ -28,4 +28,22 @@ const deleteStore = async (storeId) => {
   } catch (error) {}
 };
 
-module.exports = { createStore, getStore, updateStore, deleteStore };
+const getStore = async (storeId) => {
+  try {
+    const getOneStore = await StoreModel.findById(storeId);
+    return getOneStore;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: StoreRepository.js ~ line 35 ~ getStore ~ error",
+      error
+    );
+  }
+};
+
+module.exports = {
+  createStore,
+  getAllStore,
+  updateStore,
+  deleteStore,
+  getStore,
+};

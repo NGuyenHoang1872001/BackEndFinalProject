@@ -19,11 +19,13 @@ router.post("/createStore", storeController.createStore);
 router.get("/getStore", storeController.getAllStore);
 router.put("/updateStore/:storeId", storeController.updateStore);
 router.delete("/deleteStore/:storeId", storeController.deleteStore);
+router.get("/getOneStore/:storeId", storeController.getStore);
 
 router.post("/createProduct", productController.createProduct);
 router.get("/getProduct", productController.getAllProduct);
 router.put("/updateProduct/:productId", productController.updateProduct);
 router.delete("/deleteProduct/:productId", productController.deleteProduct);
+router.get("/productInStore/:storeId", productController.getProductStore);
 
 /**
  * @swagger

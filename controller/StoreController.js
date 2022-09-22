@@ -21,7 +21,7 @@ const createStore = async (req, res) => {
 
 const getAllStore = async (req, res) => {
   try {
-    const getStore = await storeRepository.getStore();
+    const getStore = await storeRepository.getAllStore();
     return res.send(getStore);
   } catch (error) {
     console.log(
@@ -49,9 +49,16 @@ const deleteStore = async (req, res) => {
   return res.status(200).send("delete successfull");
 };
 
+const getStore = async (req, res) => {
+  const { storeId } = req.params;
+  const findStore = await storeRepository.getStore(storeId);
+  return res.status(200).send(findStore);
+};
+
 module.exports = {
   createStore,
   getAllStore,
   updateStore,
   deleteStore,
+  getStore,
 };
