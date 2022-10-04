@@ -53,9 +53,17 @@ const deletePost = async (req, res) => {
   return res.status(200).send("delete successfull");
 };
 
+const getOnePost = async (req, res) => {
+  const { postId } = req.params;
+  const findPost = await postRepository.getOnePost(postId);
+  if (!findPost) return res.sendStatus(404);
+  return res.send(findPost);
+};
+
 module.exports = {
   createPost,
   getAllPost,
   updatePost,
   deletePost,
+  getOnePost,
 };

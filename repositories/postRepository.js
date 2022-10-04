@@ -28,4 +28,12 @@ const deletePost = async (postId) => {
   } catch (error) {}
 };
 
-module.exports = { createPost, getPost, updatePost, deletePost };
+const getOnePost = async (postId) => {
+  4;
+  try {
+    const getPost = PostMode.findById(postId);
+    return getPost;
+  } catch (error) {}
+};
+
+module.exports = { createPost, getPost, updatePost, deletePost, getOnePost };

@@ -4,6 +4,7 @@ const authController = require("../../controller/AutherController");
 const postController = require("../../controller/PostController");
 const storeController = require("../../controller/StoreController");
 const productController = require("../../controller/ProductController");
+const { route } = require("moongose/routes");
 
 router.post("/register", authController.register);
 
@@ -14,6 +15,7 @@ router.post("/createPost", postController.createPost);
 router.get("/getPost", postController.getAllPost);
 router.put("/updatePost/:postId", postController.updatePost);
 router.delete("/deletePost/:postId", postController.deletePost);
+router.get("/getOnePost/:postId", postController.getOnePost);
 
 router.post("/createStore", storeController.createStore);
 router.get("/getStore", storeController.getAllStore);
