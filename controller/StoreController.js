@@ -55,10 +55,25 @@ const getStore = async (req, res) => {
   return res.status(200).send(findStore);
 };
 
+const getOwnerStore = async (req, res) => {
+  const { ownerId } = req.params;
+  console.log(
+    "🚀 ~ file: StoreController.js ~ line 60 ~ getOwnerStore ~ ownerId",
+    ownerId
+  );
+  const getDetailOwner = await storeRepository.getOwnerStore(ownerId);
+  console.log(
+    "🚀 ~ file: StoreController.js ~ line 61 ~ getOwnerStore ~ getDetailOwner",
+    getDetailOwner
+  );
+  res.send(getDetailOwner);
+};
+
 module.exports = {
   createStore,
   getAllStore,
   updateStore,
   deleteStore,
   getStore,
+  getOwnerStore,
 };

@@ -22,6 +22,7 @@ router.get("/getStore", storeController.getAllStore);
 router.put("/updateStore/:storeId", storeController.updateStore);
 router.delete("/deleteStore/:storeId", storeController.deleteStore);
 router.get("/getOneStore/:storeId", storeController.getStore);
+router.get("/getOwnerStore/:ownerId", storeController.getOwnerStore);
 
 router.post("/createProduct", productController.createProduct);
 router.get("/getProduct", productController.getAllProduct);

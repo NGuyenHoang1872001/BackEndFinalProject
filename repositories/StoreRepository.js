@@ -40,10 +40,19 @@ const getStore = async (storeId) => {
   }
 };
 
+const getOwnerStore = async (ownerId) => {
+  try {
+    const getOwner = await StoreModel.find({ ownerId: ownerId });
+
+    return getOwner;
+  } catch (error) {}
+};
+
 module.exports = {
   createStore,
   getAllStore,
   updateStore,
   deleteStore,
   getStore,
+  getOwnerStore,
 };
