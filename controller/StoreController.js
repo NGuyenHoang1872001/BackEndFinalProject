@@ -4,10 +4,10 @@ const UserMode = require("../database/model/userModel");
 
 const createStore = async (req, res) => {
   try {
-    const { title, cover, ownerId } = req.body;
+    const { name, email, phoneNumber, ownerId } = req.body;
     const findUser = await UserMode.findById(ownerId);
     if (!findUser) return res.send(400);
-    const payload = { title, cover, ownerId };
+    const payload = { name, email, phoneNumber, ownerId };
 
     const response = await storeRepository.createStore(payload);
     return res.send(response);
@@ -34,8 +34,8 @@ const getAllStore = async (req, res) => {
 const updateStore = async (req, res) => {
   const { storeId } = req.params;
   if (!storeId || !req.body) return res.status(403).send("Bad request");
-  const { cover, title } = req.body;
-  const option = { title, cover };
+  const { name, email, phoneNumber } = req.body;
+  const option = { name, email, phoneNumber };
   const store = await storeRepository.updateStore(storeId, option);
   if (!store) return res.status(503).send("Service Unavailable");
   return res.status(200).send(store);

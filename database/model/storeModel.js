@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 const { Schema } = mongoose;
 const StoreModel = new Schema(
   {
-    title: { type: String, required: true },
-    cover: { type: String, required: true },
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    phoneNumber: { type: Number, required: true },
     ownerId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
