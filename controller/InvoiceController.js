@@ -4,8 +4,17 @@ const InvoiceRepository = require("../repositories/InvoiceRepository");
 
 const createInvoice = async (req, res) => {
   try {
-    const { name, address, phoneNumber, email, quantity, storeId, userId } =
-      req.body;
+    const {
+      name,
+      address,
+      phoneNumber,
+      email,
+      quantity,
+      ammount,
+      paymentMethod,
+      storeId,
+      userId,
+    } = req.body;
     const findUser = await UserModel.findById(userId);
     if (!findUser) return res.send(400);
     const payload = {
@@ -14,6 +23,8 @@ const createInvoice = async (req, res) => {
       phoneNumber,
       email,
       quantity,
+      ammount,
+      paymentMethod,
       storeId,
       userId,
     };

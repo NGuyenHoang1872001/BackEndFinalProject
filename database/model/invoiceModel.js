@@ -7,6 +7,8 @@ const InvoiceModel = new Schema(
     phoneNumber: { type: Number, required: true },
     email: { type: String, required: true },
     quantity: { type: Number, required: true },
+    ammount: { type: Number, required: true },
+    paymentMethod: { type: String, required: true },
     storeId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,
