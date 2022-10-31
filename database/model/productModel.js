@@ -11,6 +11,7 @@ const ProductModel = new Schema(
       required: true,
       ref: "Store",
     },
+    quantity: { type: String, required: true },
   },
   {
     timestamps: true,

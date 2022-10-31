@@ -1,9 +1,9 @@
 const User = require("../database/model/userModel");
 const UserModel = require("../database/model/userModel");
 
-const FindDetailUser = async (userId) => {
+const FindDetailUser = async (authorId) => {
   try {
-    const getDetailUser = await UserModel.find({ _id: userId });
+    const getDetailUser = await UserModel.find({ _id: authorId });
     return getDetailUser;
   } catch (error) {}
 };

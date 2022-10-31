@@ -11,7 +11,7 @@ const PostModel = new Schema(
     },
     store: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "User",
+      ref: "Store",
     },
   },
   {

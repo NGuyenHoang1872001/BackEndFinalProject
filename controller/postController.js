@@ -60,10 +60,34 @@ const getOnePost = async (req, res) => {
   return res.send(findPost);
 };
 
+const getPostByAuthor = async (req, res) => {
+  try {
+    const { authorId } = req.params;
+    console.log(
+      "🚀 ~ file: postController.js ~ line 66 ~ getPostByAuthor ~ authorId",
+      authorId
+    );
+
+    const findPost = await postRepository.getPostbyAuthor(authorId);
+    console.log(
+      "🚀 ~ file: postController.js ~ line 71 ~ getPostByAuthor ~ findPost",
+      findPost
+    );
+
+    return res.send(findPost);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: postController.js ~ line 73 ~ getPostByAuthor ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createPost,
   getAllPost,
   updatePost,
   deletePost,
   getOnePost,
+  getPostByAuthor,
 };

@@ -5,6 +5,7 @@ const postController = require("../../controller/PostController");
 const storeController = require("../../controller/StoreController");
 const productController = require("../../controller/ProductController");
 const userControleer = require("../../controller/UserController");
+const InvoiceController = require("../../controller/InvoiceController");
 const { route } = require("moongose/routes");
 
 router.post("/register", authController.register);
@@ -33,6 +34,14 @@ router.get("/productInStore/:storeId", productController.getProductStore);
 
 router.get("/getUser", userControleer.findAllUser);
 router.get("/getDetailUser/:userId", userControleer.findInformationUser);
+router.get("/getPostByAuthor/:authorId", postController.getPostByAuthor);
+
+router.post("/createInvoice", InvoiceController.createInvoice);
+
+router.get("/getInvoice", InvoiceController.getAllInvoice);
+router.put("/updateInvoice/:invoiceId", InvoiceController.updateInvoice);
+router.delete("/deleteInvoice/:invoiceId", InvoiceController.deleteInvoice);
+router.get("/getInvoiceByAuthor/:userId", InvoiceController.getInvoiceByUser);
 
 /**
  * @swagger

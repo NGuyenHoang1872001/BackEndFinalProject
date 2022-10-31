@@ -4,10 +4,10 @@ const ProductModel = require("../database/model/productModel");
 
 const createProduct = async (req, res) => {
   try {
-    const { name, cover, price, storeId, description } = req.body;
+    const { name, cover, price, storeId, description, quantity } = req.body;
     const findStore = await StoreModel.findById(storeId);
     if (!findStore) return res.send(400);
-    const payload = { name, cover, price, storeId, description };
+    const payload = { name, cover, price, storeId, description, quantity };
 
     const response = await productRepository.createProduct(payload);
     return res.send(response);
@@ -34,8 +34,8 @@ const getAllProduct = async (req, res) => {
 const updateProduct = async (req, res) => {
   const { productId } = req.params;
   if (!productId || !req.body) return res.status(403).send("Bad request");
-  const { cover, name, description, price } = req.body;
-  const option = { cover, name, description, price };
+  const { cover, name, description, price, quantity } = req.body;
+  const option = { cover, name, description, price, quantity };
   const product = await productRepository.updateProduct(productId, option);
   if (!product) return res.status(503).send("Service Unavailable");
   return res.status(200).send(product);

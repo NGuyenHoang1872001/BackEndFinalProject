@@ -29,11 +29,34 @@ const deletePost = async (postId) => {
 };
 
 const getOnePost = async (postId) => {
-  4;
   try {
     const getPost = PostMode.findById(postId);
     return getPost;
   } catch (error) {}
 };
 
-module.exports = { createPost, getPost, updatePost, deletePost, getOnePost };
+const getPostbyAuthor = async (userId) => {
+  try {
+    const user = userId;
+    console.log(
+      "🚀 ~ file: PostRepository.js ~ line 41 ~ getPostbyAuthor ~ user",
+      user
+    );
+    const getPost = PostMode.find({ author: userId }).populate("author");
+    return getPost;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: PostRepository.js ~ line 43 ~ getPostbyAuthor ~ error",
+      error
+    );
+  }
+};
+
+module.exports = {
+  createPost,
+  getPost,
+  updatePost,
+  deletePost,
+  getOnePost,
+  getPostbyAuthor,
+};
