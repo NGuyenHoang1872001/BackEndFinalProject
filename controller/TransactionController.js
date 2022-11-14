@@ -18,7 +18,20 @@ const createTransaction = async (req, res) => {
     );
   }
 };
+const viewTransaction = async (req, res) => {
+  try {
+    const response = await TransactionRepository.viewTransaction();
+
+    return res.send(response);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: TransactionController.js ~ line 26 ~ viewTransaction ~ error",
+      error
+    );
+  }
+};
 
 module.exports = {
   createTransaction,
+  viewTransaction,
 };

@@ -14,6 +14,7 @@ const createInvoice = async (req, res) => {
       paymentMethod,
       storeId,
       userId,
+      transactionId,
     } = req.body;
     const findUser = await UserModel.findById(userId);
     if (!findUser) return res.send(400);
@@ -27,6 +28,7 @@ const createInvoice = async (req, res) => {
       paymentMethod,
       storeId,
       userId,
+      transactionId,
     };
 
     const response = await InvoiceRepository.createInvoice(payload);
