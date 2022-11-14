@@ -21,7 +21,6 @@ const InvoiceModel = new Schema(
     },
     transactionId: {
       type: mongoose.Schema.Types.ObjectId,
-      required: true,
       ref: "Transaction",
     },
   },
