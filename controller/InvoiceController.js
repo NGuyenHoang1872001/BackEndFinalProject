@@ -9,10 +9,10 @@ const createInvoice = async (req, res) => {
       address,
       phoneNumber,
       email,
-      quantity,
+      quantityProduct,
       ammount,
       paymentMethod,
-      storeId,
+      productId,
       userId,
       transactionId,
     } = req.body;
@@ -23,10 +23,10 @@ const createInvoice = async (req, res) => {
       address,
       phoneNumber,
       email,
-      quantity,
+      quantityProduct,
       ammount,
       paymentMethod,
-      storeId,
+      productId,
       userId,
       transactionId,
     };
@@ -49,14 +49,21 @@ const getAllInvoice = async (req, res) => {
 };
 
 const updateInvoice = async (req, res) => {
-  const { invoiceId } = req.params;
-  if (!invoiceId || !req.body) return res.status(403).send("Bad request");
-  const { name, address, phoneNumber, email } = req.body;
-  const option = { name, address, phoneNumber, email };
+  try {
+    const { invoiceId } = req.params;
+    if (!invoiceId || !req.body) return res.status(403).send("Bad request");
+    const { name, address, phoneNumber, email } = req.body;
+    const option = { name, address, phoneNumber, email };
 
-  const invoice = await InvoiceRepository.updateInvoice(invoiceId, option);
-  if (!invoice) return res.status(503).send("Service Unavailable");
-  return res.status(200).send(invoice);
+    const invoice = await InvoiceRepository.updateInvoice(invoiceId, option);
+    if (!invoice) return res.status(503).send("Service Unavailable");
+    return res.status(200).send(invoice);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: InvoiceController.js ~ line 62 ~ updateInvoice ~ error",
+      error
+    );
+  }
 };
 
 const deleteInvoice = async (req, res) => {

@@ -39,7 +39,9 @@ const getInvoicebyAuthor = async (userId) => {
   try {
     const user = userId;
 
-    const getInvoice = InvoiceModel.find({ userId: user }).populate("userId");
+    const getInvoice = InvoiceModel.find({ userId: user }).populate(
+      "productId"
+    );
     if (getInvoice) return getInvoice;
     console.log("no Data");
   } catch (error) {
