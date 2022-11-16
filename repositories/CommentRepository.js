@@ -1,4 +1,3 @@
-const comments_model = require("moongose/models/comments_model");
 const CommentModel = require("../database/model/commentModel");
 
 const createComment = async (payload) => {

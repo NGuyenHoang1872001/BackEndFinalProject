@@ -8,6 +8,7 @@ const userControleer = require("../../controller/UserController");
 const InvoiceController = require("../../controller/InvoiceController");
 const TransactionController = require("../../controller/TransactionController");
 const CommentControler = require("../../controller/CommentController");
+const ReplyController = require("../../controller/ReplyController");
 const { route } = require("moongose/routes");
 
 router.post("/register", authController.register);
@@ -53,6 +54,10 @@ router.put("/updateComment/:commentId", CommentControler.updateComment);
 router.delete("/deleteComment/:commentId", CommentControler.deleteComment);
 router.get("/getComment/:postId", CommentControler.getCommentByPost);
 
+router.post("/createReply", ReplyController.createReply);
+router.put("/updateReply/:replyId", ReplyController.updateReply);
+router.delete("/deleteReply/:replyId", ReplyController.deleteReply);
+router.get("/getReply/:commentId", ReplyController.getReplybyComment);
 /**
  * @swagger
  * /routerAPI/register:
