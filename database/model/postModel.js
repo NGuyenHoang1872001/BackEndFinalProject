@@ -13,6 +13,12 @@ const PostModel = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Store",
     },
+    liked: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,

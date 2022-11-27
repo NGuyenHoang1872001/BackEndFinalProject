@@ -58,6 +58,9 @@ router.post("/createReply", ReplyController.createReply);
 router.put("/updateReply/:replyId", ReplyController.updateReply);
 router.delete("/deleteReply/:replyId", ReplyController.deleteReply);
 router.get("/getReply/:commentId", ReplyController.getReplybyComment);
+
+router.put("/getLikedUser/:postId", postController.getAuthorLIike);
+router.put("/getUnLikedUser/:postId", postController.getAuthorUnLike);
 /**
  * @swagger
  * /routerAPI/register:

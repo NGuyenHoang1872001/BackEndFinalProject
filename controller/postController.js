@@ -83,6 +83,44 @@ const getPostByAuthor = async (req, res) => {
   }
 };
 
+const getAuthorLIike = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { liked } = req.body;
+    console.log(
+      "🚀 ~ file: PostController.js ~ line 90 ~ getAuthorLIike ~ like",
+      liked
+    );
+
+    const getLiked = await postRepository.pushAuthorLikePost(postId, liked);
+    res.send(getLiked);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: PostController.js ~ line 93 ~ getAuthorLIike ~ error",
+      error
+    );
+  }
+};
+const getAuthorUnLike = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { liked } = req.body;
+    console.log(
+      "🚀 ~ file: PostController.js ~ line 90 ~ getAuthorLIike ~ like",
+      liked
+    );
+    if (!liked && !postId) return res.sendStatus(404);
+
+    const unLiked = await postRepository.pullAuthorLikePost(postId, liked);
+    res.send(unLiked);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: PostController.js ~ line 93 ~ getAuthorLIike ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createPost,
   getAllPost,
@@ -90,4 +128,6 @@ module.exports = {
   deletePost,
   getOnePost,
   getPostByAuthor,
+  getAuthorLIike,
+  getAuthorUnLike,
 };

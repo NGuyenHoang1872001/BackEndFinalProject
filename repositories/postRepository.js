@@ -1,3 +1,4 @@
+const { post } = require("moongose/routes");
 const PostMode = require("../database/model/postModel");
 const UserMode = require("../database/model/userModel");
 
@@ -12,7 +13,7 @@ const createPost = async (payload) => {
 };
 
 const getPost = async () => {
-  const getAllPost = PostMode.find({});
+  const getAllPost = PostMode.find({}).populate("author");
   return getAllPost;
 };
 
@@ -51,6 +52,25 @@ const getPostbyAuthor = async (userId) => {
     );
   }
 };
+const pushAuthorLikePost = async (postId, liked) => {
+  try {
+    const getLike = PostMode.findByIdAndUpdate(
+      { _id: postId },
+      { $push: { liked } }
+    );
+    return getLike;
+  } catch (error) {}
+};
+
+const pullAuthorLikePost = async (postId, liked) => {
+  try {
+    const unLike = PostMode.findByIdAndUpdate(
+      { _id: postId },
+      { $pull: { liked } }
+    );
+    return unLike;
+  } catch (error) {}
+};
 
 module.exports = {
   createPost,
@@ -59,4 +79,6 @@ module.exports = {
   deletePost,
   getOnePost,
   getPostbyAuthor,
+  pushAuthorLikePost,
+  pullAuthorLikePost,
 };

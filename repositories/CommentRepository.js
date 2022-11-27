@@ -6,6 +6,10 @@ const createComment = async (payload) => {
     payload
   );
   const newPost = await CommentModel.create(payload);
+  console.log(
+    "🚀 ~ file: CommentRepository.js ~ line 9 ~ createComment ~ newPost",
+    newPost
+  );
 
   return newPost;
 };
