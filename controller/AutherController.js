@@ -5,8 +5,8 @@ const { hash, comparePassword } = require("../helper/bcrypt");
 
 const register = async (req, res) => {
   try {
-    const { firstName, lastName, email, password } = req.body;
-    if (!email || !password || !firstName || !lastName)
+    const { firstName, lastName, email, password, role } = req.body;
+    if (!email || !password || !firstName || !lastName || !role)
       return res.status(400).send("missing param");
     const findEmail = await UserModel.findOne({ email });
     if (findEmail) return res.status(400).send("Email Existed");
@@ -16,6 +16,7 @@ const register = async (req, res) => {
       password: hashPasword,
       firstName,
       lastName,
+      role,
     });
 
     if (!user) return res.sendStatus(500);

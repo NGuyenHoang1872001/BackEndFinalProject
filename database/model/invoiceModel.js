@@ -25,6 +25,10 @@ const InvoiceModel = new Schema(
       type: mongoose.Schema.Types.ObjectId,
       ref: "Transaction",
     },
+    status: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,

@@ -59,8 +59,8 @@ router.put("/updateReply/:replyId", ReplyController.updateReply);
 router.delete("/deleteReply/:replyId", ReplyController.deleteReply);
 router.get("/getReply/:commentId", ReplyController.getReplybyComment);
 
-router.put("/getLikedUser/:postId", postController.getAuthorLIike);
-router.put("/getUnLikedUser/:postId", postController.getAuthorUnLike);
+router.put("/getLikedPost/:postId", postController.getAuthorLIike);
+router.put("/getUnLikedUPost/:postId", postController.getAuthorUnLike);
 router.put("/getStoreFollowing/:storeId", storeController.getFollowingStore);
 router.put(
   "/getStoreUnFollowing/:storeId",
@@ -71,6 +71,11 @@ router.get(
   "/getInvoiceByProduct/:productId",
   InvoiceController.getInvoiceByProductId
 );
+
+router.put("/getUserFollowing/:id", userControleer.getFollowingUser);
+router.put("/getUserUnFollowing/:id", userControleer.getUnFollowingUser);
+
+router.get("/getUserFollow/:id", userControleer.getUserFollow);
 /**
  * @swagger
  * /routerAPI/register:

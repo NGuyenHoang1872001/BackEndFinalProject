@@ -55,12 +55,9 @@ const getInvoicebyAuthor = async (userId) => {
 const getInvoiceByProduct = async (productId) => {
   try {
     const product = productId;
-    console.log(
-      "🚀 ~ file: InvoiceRepository.js ~ line 58 ~ getInvoiceByProduct ~ product",
-      product
-    );
+
     const getInvoice = await InvoiceModel.find({ productId: product }).populate(
-      "userId"
+      "productId"
     );
 
     return getInvoice;

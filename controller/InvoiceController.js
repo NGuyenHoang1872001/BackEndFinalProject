@@ -16,6 +16,7 @@ const createInvoice = async (req, res) => {
       userId,
       transactionId,
     } = req.body;
+    const status = "Preparing";
     const findUser = await UserModel.findById(userId);
     if (!findUser) return res.send(400);
     const payload = {
@@ -29,6 +30,7 @@ const createInvoice = async (req, res) => {
       productId,
       userId,
       transactionId,
+      status,
     };
 
     const response = await InvoiceRepository.createInvoice(payload);
@@ -52,8 +54,8 @@ const updateInvoice = async (req, res) => {
   try {
     const { invoiceId } = req.params;
     if (!invoiceId || !req.body) return res.status(403).send("Bad request");
-    const { name, address, phoneNumber, email } = req.body;
-    const option = { name, address, phoneNumber, email };
+    const { name, address, phoneNumber, email, status } = req.body;
+    const option = { name, address, phoneNumber, email, status };
 
     const invoice = await InvoiceRepository.updateInvoice(invoiceId, option);
     if (!invoice) return res.status(503).send("Service Unavailable");
