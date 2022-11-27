@@ -89,10 +89,26 @@ const getInvoiceByUser = async (req, res) => {
   }
 };
 
+const getInvoiceByProductId = async (req, res) => {
+  try {
+    const { productId } = req.params;
+
+    const findInvoice = await InvoiceRepository.getInvoiceByProduct(productId);
+
+    return res.send(findInvoice);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: InvoiceController.js ~ line 100 ~ getInvoiceByProductId ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createInvoice,
   getAllInvoice,
   updateInvoice,
   deleteInvoice,
   getInvoiceByUser,
+  getInvoiceByProductId,
 };

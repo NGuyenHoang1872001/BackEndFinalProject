@@ -3,13 +3,11 @@ const { Schema } = mongoose;
 const CommentModel = new Schema(
   {
     comment: { type: String, required: true },
-    author: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: "User",
-      },
-    ],
+    author: {
+      type: mongoose.Schema.Types.ObjectId,
+      required: true,
+      ref: "User",
+    },
     postId: {
       type: mongoose.Schema.Types.ObjectId,
       required: true,

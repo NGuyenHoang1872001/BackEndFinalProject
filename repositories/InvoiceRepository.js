@@ -52,10 +52,31 @@ const getInvoicebyAuthor = async (userId) => {
   }
 };
 
+const getInvoiceByProduct = async (productId) => {
+  try {
+    const product = productId;
+    console.log(
+      "🚀 ~ file: InvoiceRepository.js ~ line 58 ~ getInvoiceByProduct ~ product",
+      product
+    );
+    const getInvoice = await InvoiceModel.find({ productId: product }).populate(
+      "userId"
+    );
+
+    return getInvoice;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: InvoiceRepository.js ~ line 71 ~ getInvoiceByProduct ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createInvoice,
   getInvoice,
   updateInvoice,
   deleteInvoice,
   getInvoicebyAuthor,
+  getInvoiceByProduct,
 };

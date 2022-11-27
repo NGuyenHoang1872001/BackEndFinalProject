@@ -69,6 +69,39 @@ const getOwnerStore = async (req, res) => {
   res.send(getDetailOwner);
 };
 
+const getFollowingStore = async (req, res) => {
+  try {
+    const { storeId } = req.params;
+
+    const { following } = req.body;
+
+    const getFollow = await storeRepository.pushFollowStore(storeId, following);
+    res.send(getFollow);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: StoreController.js ~ line 80 ~ getAuthorLIike ~ error",
+      error
+    );
+  }
+};
+const getUnFollowingStore = async (req, res) => {
+  try {
+    const { storeId } = req.params;
+    const { following } = req.body;
+
+    const unFollowing = await storeRepository.pullFollowStore(
+      storeId,
+      following
+    );
+    res.send(unFollowing);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: StoreController.js ~ line 94 ~ getUnFollowingStore ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createStore,
   getAllStore,
@@ -76,4 +109,6 @@ module.exports = {
   deleteStore,
   getStore,
   getOwnerStore,
+  getFollowingStore,
+  getUnFollowingStore,
 };

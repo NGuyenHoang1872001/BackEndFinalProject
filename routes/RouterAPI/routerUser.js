@@ -61,6 +61,16 @@ router.get("/getReply/:commentId", ReplyController.getReplybyComment);
 
 router.put("/getLikedUser/:postId", postController.getAuthorLIike);
 router.put("/getUnLikedUser/:postId", postController.getAuthorUnLike);
+router.put("/getStoreFollowing/:storeId", storeController.getFollowingStore);
+router.put(
+  "/getStoreUnFollowing/:storeId",
+  storeController.getUnFollowingStore
+);
+
+router.get(
+  "/getInvoiceByProduct/:productId",
+  InvoiceController.getInvoiceByProductId
+);
 /**
  * @swagger
  * /routerAPI/register:

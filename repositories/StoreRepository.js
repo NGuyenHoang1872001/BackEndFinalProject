@@ -48,6 +48,28 @@ const getOwnerStore = async (ownerId) => {
   } catch (error) {}
 };
 
+const pushFollowStore = async (storeId, following) => {
+  try {
+    const payload = { storeId, following };
+
+    const getFollow = StoreModel.findByIdAndUpdate(
+      { _id: storeId },
+      { $push: { following } }
+    );
+    return getFollow;
+  } catch (error) {}
+};
+
+const pullFollowStore = async (storeId, following) => {
+  try {
+    const unFollow = StoreModel.findByIdAndUpdate(
+      { _id: storeId },
+      { $pull: { following } }
+    );
+    return unFollow;
+  } catch (error) {}
+};
+
 module.exports = {
   createStore,
   getAllStore,
@@ -55,4 +77,6 @@ module.exports = {
   deleteStore,
   getStore,
   getOwnerStore,
+  pushFollowStore,
+  pullFollowStore,
 };

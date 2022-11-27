@@ -10,6 +10,12 @@ const StoreModel = new Schema(
       required: true,
       ref: "User",
     },
+    following: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,
