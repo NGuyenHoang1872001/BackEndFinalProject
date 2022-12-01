@@ -38,6 +38,7 @@ router.get("/productInStore/:storeId", productController.getProductStore);
 router.get("/getUser", userControleer.findAllUser);
 router.get("/getDetailUser/:userId", userControleer.findInformationUser);
 router.get("/getPostByAuthor/:authorId", postController.getPostByAuthor);
+router.put("/updateUser/:userId", userControleer.handleUpdateUser);
 
 router.post("/createInvoice", InvoiceController.createInvoice);
 
@@ -60,7 +61,7 @@ router.delete("/deleteReply/:replyId", ReplyController.deleteReply);
 router.get("/getReply/:commentId", ReplyController.getReplybyComment);
 
 router.put("/getLikedPost/:postId", postController.getAuthorLIike);
-router.put("/getUnLikedUPost/:postId", postController.getAuthorUnLike);
+router.put("/getUnLikedPost/:postId", postController.getAuthorUnLike);
 router.put("/getStoreFollowing/:storeId", storeController.getFollowingStore);
 router.put(
   "/getStoreUnFollowing/:storeId",
@@ -76,6 +77,7 @@ router.put("/getUserFollowing/:id", userControleer.getFollowingUser);
 router.put("/getUserUnFollowing/:id", userControleer.getUnFollowingUser);
 
 router.get("/getUserFollow/:id", userControleer.getUserFollow);
+router.get("/searchUser", userControleer.findUserName);
 /**
  * @swagger
  * /routerAPI/register:

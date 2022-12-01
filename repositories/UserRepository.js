@@ -17,6 +17,14 @@ const FindAllUser = async () => {
 
 const pushFollowUser = async (id, following) => {
   try {
+    console.log(
+      "🚀 ~ file: UserRepository.js ~ line 19 ~ pushFollowUser ~ following",
+      following
+    );
+    console.log(
+      "🚀 ~ file: UserRepository.js ~ line 19 ~ pushFollowUser ~ id",
+      id
+    );
     const getFollow = await UserModel.findByIdAndUpdate(
       { _id: id },
       { $push: { following } }
@@ -49,10 +57,7 @@ const getUserFollowing = async (id) => {
     const findUser = await UserModel.find({
       following: { $all: [id] },
     });
-    console.log(
-      "🚀 ~ file: UserRepository.js ~ line 60 ~ getUserFollowing ~ findUser",
-      findUser
-    );
+
     return findUser;
   } catch (error) {
     console.log(
@@ -62,10 +67,37 @@ const getUserFollowing = async (id) => {
   }
 };
 
+const getSearchUser = async (condition, options) => {
+  try {
+    const findUserName = await UserModel.paginate(condition, options);
+    return findUserName;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: UserRepository.js ~ line 72 ~ getSearchUser ~ error",
+      error
+    );
+  }
+};
+
+const updateUser = async (userId, payLoad) => {
+  console.log(
+    "🚀 ~ file: UserRepository.js:83 ~ updateUser ~ payLoad",
+    payLoad
+  );
+  try {
+    const update = UserModel.findByIdAndUpdate(userId, payLoad);
+    return update;
+  } catch (error) {
+    console.log("🚀 ~ file: UserRepository.js:87 ~ updateUser ~ error", error);
+  }
+};
+
 module.exports = {
   FindDetailUser,
   FindAllUser,
   pushFollowUser,
   pullFollowUser,
   getUserFollowing,
+  getSearchUser,
+  updateUser,
 };

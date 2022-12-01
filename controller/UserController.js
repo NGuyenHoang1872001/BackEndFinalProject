@@ -4,7 +4,11 @@ const {
   pullFollowUser,
   pushFollowUser,
   getUserFollowing,
+  getSearchUser,
+  updateUser,
 } = require("../repositories/UserRepository");
+const { hash } = require("../helper/bcrypt");
+const bcrypt = require("../helper/bcrypt");
 
 const findAllUser = async (req, res) => {
   try {
@@ -80,10 +84,52 @@ const getUserFollow = async (req, res) => {
   }
 };
 
+const findUserName = async (req, res) => {
+  try {
+    const { query } = req.query;
+    const { page = 1, limit = 3 } = req.query;
+    const options = {
+      page,
+      limit,
+    };
+    const condition = {
+      $or: [
+        { firstName: { $regex: String(query), $options: "i" } },
+        { lastName: { $regex: String(query), $options: "i" } },
+        { email: { $regex: String(query), $options: "i" } },
+      ],
+    };
+    const responses = await getSearchUser(condition, options);
+    return res.send(responses);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: UserController.js ~ line 90 ~ findUserName ~ error",
+      error
+    );
+  }
+};
+const handleUpdateUser = async (req, res) => {
+  try {
+    const { userId } = req.params;
+    const { firstName, lastName, email, password, role } = req.body;
+    const hashPasword = await bcrypt.hash(password);
+    const payLoad = { firstName, lastName, email, password: hashPasword, role };
+    const response = await updateUser(userId, payLoad);
+    res.send(response);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: UserController.js:119 ~ handleUpdateUser ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   findInformationUser,
   findAllUser,
   getFollowingUser,
   getUnFollowingUser,
+  findUserName,
   getUserFollow,
+  handleUpdateUser,
 };
