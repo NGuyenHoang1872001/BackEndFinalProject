@@ -13,7 +13,9 @@ const createPost = async (payload) => {
 };
 
 const getPost = async () => {
-  const getAllPost = PostMode.find({}).populate("author");
+  const getAllPost = PostMode.find({})
+    .populate("author")
+    .sort({ createdAt: -1 });
   return getAllPost;
 };
 

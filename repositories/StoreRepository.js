@@ -12,7 +12,7 @@ const createStore = async (payload) => {
 };
 
 const getAllStore = async () => {
-  const getAllStore = StoreModel.find({});
+  const getAllStore = StoreModel.find({}).populate("ownerId");
   return getAllStore;
 };
 

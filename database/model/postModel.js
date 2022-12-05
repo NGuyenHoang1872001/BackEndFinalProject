@@ -19,6 +19,12 @@ const PostModel = new Schema(
         ref: "User",
       },
     ],
+    report: [
+      {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
+      },
+    ],
   },
   {
     timestamps: true,

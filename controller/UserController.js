@@ -6,6 +6,8 @@ const {
   getUserFollowing,
   getSearchUser,
   updateUser,
+  findUserStore,
+  findUserNoStore,
 } = require("../repositories/UserRepository");
 const { hash } = require("../helper/bcrypt");
 const bcrypt = require("../helper/bcrypt");
@@ -111,9 +113,16 @@ const findUserName = async (req, res) => {
 const handleUpdateUser = async (req, res) => {
   try {
     const { userId } = req.params;
-    const { firstName, lastName, email, password, role } = req.body;
+    const { firstName, lastName, email, password, role, storeId } = req.body;
     const hashPasword = await bcrypt.hash(password);
-    const payLoad = { firstName, lastName, email, password: hashPasword, role };
+    const payLoad = {
+      firstName,
+      lastName,
+      email,
+      password: hashPasword,
+      role,
+      storeId,
+    };
     const response = await updateUser(userId, payLoad);
     res.send(response);
   } catch (error) {
@@ -124,6 +133,24 @@ const handleUpdateUser = async (req, res) => {
   }
 };
 
+// const handleGetUserStore = async (req, res) => {
+//   try {
+//     const response = await findUserStore();
+//     res.send(response);
+//   } catch (error) {
+//     console.log(
+//       "🚀 ~ file: UserController.js:141 ~ handleGetUserStore ~ error",
+//       error
+//     );
+//   }
+// };
+// const handleGetUserNoStore = async (req, res) => {
+//   try {
+//     const response = await findUserNoStore();
+//     res.send(response);
+//   } catch (error) {}
+// };
+
 module.exports = {
   findInformationUser,
   findAllUser,
@@ -132,4 +159,6 @@ module.exports = {
   findUserName,
   getUserFollow,
   handleUpdateUser,
+  // handleGetUserStore,
+  // handleGetUserNoStore,
 };

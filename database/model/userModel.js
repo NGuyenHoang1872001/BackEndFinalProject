@@ -16,9 +16,10 @@ const UserModel = new Schema(
       },
     ],
     role: {
-      trype: String,
+      type: String,
       enum: [Admin_Role, User_Role],
     },
+    storeId: { type: mongoose.Schema.Types.ObjectId, ref: "Store" },
   },
   {
     timestamps: true,

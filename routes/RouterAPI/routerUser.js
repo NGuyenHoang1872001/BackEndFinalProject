@@ -78,6 +78,8 @@ router.put("/getUserUnFollowing/:id", userControleer.getUnFollowingUser);
 
 router.get("/getUserFollow/:id", userControleer.getUserFollow);
 router.get("/searchUser", userControleer.findUserName);
+// router.get("/getUserStore", userControleer.handleGetUserStore);
+// router.get("/getUserNoStore", userControleer.handleGetUserNoStore);
 /**
  * @swagger
  * /routerAPI/register:
