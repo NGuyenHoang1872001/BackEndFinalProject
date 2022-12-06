@@ -28,10 +28,23 @@ const getProductStore = async (storeId) => {
   const getProductInStore = ProductModel.find({ storeId });
   return getProductInStore;
 };
+const handleGetProductMonthly = async (id, startDay, endDay) => {
+  try {
+    const store = await StoreModel.find({
+      storeId: id,
+      createdAt: {
+        $gte: startDay,
+        $lte: endDay,
+      },
+    });
+    return store;
+  } catch (error) {}
+};
 module.exports = {
   createProduct,
   getProduct,
   updateProduct,
   deleteProduct,
   getProductStore,
+  handleGetProductMonthly,
 };

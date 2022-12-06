@@ -6,8 +6,7 @@ const {
   getUserFollowing,
   getSearchUser,
   updateUser,
-  findUserStore,
-  findUserNoStore,
+  handleGetUserMonthly,
 } = require("../repositories/UserRepository");
 const { hash } = require("../helper/bcrypt");
 const bcrypt = require("../helper/bcrypt");
@@ -133,23 +132,44 @@ const handleUpdateUser = async (req, res) => {
   }
 };
 
-// const handleGetUserStore = async (req, res) => {
-//   try {
-//     const response = await findUserStore();
-//     res.send(response);
-//   } catch (error) {
-//     console.log(
-//       "🚀 ~ file: UserController.js:141 ~ handleGetUserStore ~ error",
-//       error
-//     );
-//   }
-// };
-// const handleGetUserNoStore = async (req, res) => {
-//   try {
-//     const response = await findUserNoStore();
-//     res.send(response);
-//   } catch (error) {}
-// };
+const getUserMonthly = async (req, res) => {
+  try {
+    const dateToday = new Date();
+    console.log(
+      "🚀 ~ file: UserController.js:138 ~ getUserMonthly ~ dateToday",
+      dateToday
+    );
+    const yearToday = dateToday.getFullYear();
+    console.log(
+      "🚀 ~ file: UserController.js:140 ~ getUserMonthly ~ yearToday",
+      yearToday
+    );
+
+    let userMonthly = [];
+    for (let month = 0; month < 12; month++) {
+      const startDay = new Date(yearToday, month);
+
+      const endDay = new Date(yearToday, month + 1);
+
+      const response = await handleGetUserMonthly(startDay, endDay);
+      console.log(
+        "🚀 ~ file: UserController.js:161 ~ getUserMonthly ~ response",
+        response
+      );
+      const numberOfUser = response.length;
+      await userMonthly.push({
+        month: month + 1,
+        numOfUser: numberOfUser,
+      });
+    }
+    res.send(userMonthly);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: UserController.js:152 ~ getUserMonthly ~ error",
+      error
+    );
+  }
+};
 
 module.exports = {
   findInformationUser,
@@ -159,6 +179,7 @@ module.exports = {
   findUserName,
   getUserFollow,
   handleUpdateUser,
+  getUserMonthly,
   // handleGetUserStore,
   // handleGetUserNoStore,
 };

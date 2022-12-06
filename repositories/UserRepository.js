@@ -96,30 +96,18 @@ const updateUser = async (userId, payLoad) => {
     console.log("🚀 ~ file: UserRepository.js:87 ~ updateUser ~ error", error);
   }
 };
-// const findUserStore = async () => {
-//   try {
-//     const getUserStore = await UserModel.find({}).select("storeId");
-//     console.log(
-//       "🚀 ~ file: UserRepository.js:97 ~ findUserStore ~ getUserStore",
-//       getUserStore
-//     );
-//     console.log("hello");
-//     return getUserStore;
-//   } catch (error) {
-//     console.log(
-//       "🚀 ~ file: UserRepository.js:99 ~ findUserStore ~ error",
-//       error
-//     );
-//   }
-// };
 
-// const findUserNoStore = async () => {
-//   try {
-//     const getUserStore = await UserModel.find({ storeId: "" });
-//     return getUserStore;
-//   } catch (error) {}
-// };
-
+const handleGetUserMonthly = async (startDay, endDay) => {
+  try {
+    const user = await UserModel.find({
+      createdAt: {
+        $gte: startDay,
+        $lte: endDay,
+      },
+    });
+    return user;
+  } catch (error) {}
+};
 module.exports = {
   FindDetailUser,
   FindAllUser,
@@ -128,4 +116,5 @@ module.exports = {
   getUserFollowing,
   getSearchUser,
   updateUser,
+  handleGetUserMonthly,
 };

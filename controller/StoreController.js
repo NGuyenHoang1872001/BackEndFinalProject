@@ -102,6 +102,48 @@ const getUnFollowingStore = async (req, res) => {
   }
 };
 
+const getStoreMonthly = async (req, res) => {
+  try {
+    const dateToday = new Date();
+    console.log(
+      "🚀 ~ file: UserController.js:138 ~ getUserMonthly ~ dateToday",
+      dateToday
+    );
+    const yearToday = dateToday.getFullYear();
+    console.log(
+      "🚀 ~ file: UserController.js:140 ~ getUserMonthly ~ yearToday",
+      yearToday
+    );
+
+    let storeMonthly = [];
+    for (let month = 0; month < 12; month++) {
+      const startDay = new Date(yearToday, month);
+
+      const endDay = new Date(yearToday, month + 1);
+
+      const response = await storeRepository.handleGetStoreMonthly(
+        startDay,
+        endDay
+      );
+      console.log(
+        "🚀 ~ file: UserController.js:161 ~ getUserMonthly ~ response",
+        response
+      );
+      const numberOfStore = response.length;
+      await storeMonthly.push({
+        month: month + 1,
+        numOfStore: numberOfStore,
+      });
+    }
+    res.send(storeMonthly);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: UserController.js:152 ~ getUserMonthly ~ error",
+      error
+    );
+  }
+};
+
 module.exports = {
   createStore,
   getAllStore,
@@ -111,4 +153,5 @@ module.exports = {
   getOwnerStore,
   getFollowingStore,
   getUnFollowingStore,
+  getStoreMonthly,
 };

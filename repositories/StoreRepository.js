@@ -69,6 +69,17 @@ const pullFollowStore = async (storeId, following) => {
     return unFollow;
   } catch (error) {}
 };
+const handleGetStoreMonthly = async (startDay, endDay) => {
+  try {
+    const store = await StoreModel.find({
+      createdAt: {
+        $gte: startDay,
+        $lte: endDay,
+      },
+    });
+    return store;
+  } catch (error) {}
+};
 
 module.exports = {
   createStore,
@@ -79,4 +90,5 @@ module.exports = {
   getOwnerStore,
   pushFollowStore,
   pullFollowStore,
+  handleGetStoreMonthly,
 };

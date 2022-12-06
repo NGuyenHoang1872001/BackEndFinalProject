@@ -78,6 +78,9 @@ router.put("/getUserUnFollowing/:id", userControleer.getUnFollowingUser);
 
 router.get("/getUserFollow/:id", userControleer.getUserFollow);
 router.get("/searchUser", userControleer.findUserName);
+router.get("/userMonthly", userControleer.getUserMonthly);
+router.get("/storeMonthly", storeController.getStoreMonthly);
+router.get("/productMonthly/:id", productController.getProductMonthly);
 // router.get("/getUserStore", userControleer.handleGetUserStore);
 // router.get("/getUserNoStore", userControleer.handleGetUserNoStore);
 /**
