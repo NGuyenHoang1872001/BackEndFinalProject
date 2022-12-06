@@ -28,10 +28,9 @@ const getProductStore = async (storeId) => {
   const getProductInStore = ProductModel.find({ storeId });
   return getProductInStore;
 };
-const handleGetProductMonthly = async (id, startDay, endDay) => {
+const handleGetProductMonthly = async (startDay, endDay) => {
   try {
     const store = await StoreModel.find({
-      storeId: id,
       createdAt: {
         $gte: startDay,
         $lte: endDay,

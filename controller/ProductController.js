@@ -58,11 +58,6 @@ const getProductStore = async (req, res) => {
 };
 const getProductMonthly = async (req, res) => {
   try {
-    const { id } = req.params;
-    console.log(
-      "🚀 ~ file: ProductController.js:62 ~ getProductMonthly ~ id",
-      id
-    );
     const dateToday = new Date();
 
     const yearToday = dateToday.getFullYear();
@@ -74,7 +69,6 @@ const getProductMonthly = async (req, res) => {
       const endDay = new Date(yearToday, month + 1);
 
       const response = await productRepository.handleGetProductMonthly(
-        id,
         startDay,
         endDay
       );
