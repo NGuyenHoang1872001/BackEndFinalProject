@@ -1,6 +1,6 @@
 const PostMode = require("../../database/model/postModel");
 const UserMode = require("../../database/model/userModel");
-const postRepository = require("../../repositories/PostRepository");
+const postRepository = require("../../repositories/post/PostRepository");
 
 const createPost = async (req, res) => {
   try {

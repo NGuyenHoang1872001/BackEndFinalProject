@@ -1,4 +1,4 @@
-const CommentModel = require("../database/model/commentModel");
+const CommentModel = require("../../database/model/commentModel");
 
 const createComment = async (payload) => {
   console.log(

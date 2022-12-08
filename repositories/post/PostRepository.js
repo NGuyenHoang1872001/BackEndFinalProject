@@ -1,6 +1,6 @@
 const { post } = require("moongose/routes");
-const PostMode = require("../database/model/postModel");
-const UserMode = require("../database/model/userModel");
+const PostMode = require("../../database/model/postModel");
+const UserMode = require("../../database/model/userModel");
 
 const createPost = async (payload) => {
   console.log(

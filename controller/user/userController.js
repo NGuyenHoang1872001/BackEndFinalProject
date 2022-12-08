@@ -7,7 +7,7 @@ const {
   getSearchUser,
   updateUser,
   handleGetUserMonthly,
-} = require("../../repositories/UserRepository");
+} = require("../../repositories/user/UserRepository");
 const { hash } = require("../../helper/bcrypt");
 const bcrypt = require("../../helper/bcrypt");
 

@@ -1,5 +1,5 @@
-const User = require("../database/model/userModel");
-const UserModel = require("../database/model/userModel");
+const User = require("../../database/model/userModel");
+const UserModel = require("../../database/model/userModel");
 
 const FindDetailUser = async (authorId) => {
   try {

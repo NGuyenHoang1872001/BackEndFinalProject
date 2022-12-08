@@ -1,4 +1,4 @@
-const ReplyModel = require("../database/model/replyModel");
+const ReplyModel = require("../../database/model/replyModel");
 
 const createReply = async (payload) => {
   const newReply = await ReplyModel.create(payload);

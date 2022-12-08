@@ -1,5 +1,5 @@
-const UserMode = require("../database/model/userModel");
-const InvoiceModel = require("../database/model/invoiceModel");
+const UserMode = require("../../database/model/userModel");
+const InvoiceModel = require("../../database/model/invoiceModel");
 
 const createInvoice = async (payload) => {
   console.log(

@@ -1,5 +1,5 @@
-const StoreModel = require("../database/model/storeModel");
-const UserMode = require("../database/model/userModel");
+const StoreModel = require("../../database/model/storeModel");
+const UserMode = require("../../database/model/userModel");
 
 const createStore = async (payload) => {
   console.log(

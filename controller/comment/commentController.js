@@ -1,4 +1,4 @@
-const CommentRepository = require("../../repositories/CommentRepository");
+const CommentRepository = require("../../repositories/comment/CommentRepository");
 const PostMode = require("../../database/model/postModel");
 const UserMode = require("../../database/model/userModel");
 const CommentModel = require("../../database/model/commentModel");

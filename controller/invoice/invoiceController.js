@@ -1,6 +1,6 @@
 const InvoiceModel = require("../../database/model/invoiceModel");
 const UserModel = require("../../database/model/userModel");
-const InvoiceRepository = require("../../repositories/InvoiceRepository");
+const InvoiceRepository = require("../../repositories/invoice/InvoiceRepository");
 
 const createInvoice = async (req, res) => {
   try {

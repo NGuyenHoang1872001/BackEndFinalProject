@@ -1,4 +1,4 @@
-const ReplyRepository = require("../../repositories/ReplyRepository");
+const ReplyRepository = require("../../repositories/reply/ReplyRepository");
 const ReplyModel = require("../../database/model/replyModel");
 const UserMode = require("../../database/model/userModel");
 const CommentModel = require("../../database/model/commentModel");

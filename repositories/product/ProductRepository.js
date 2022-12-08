@@ -1,5 +1,5 @@
-const StoreModel = require("../database/model/storeModel");
-const ProductModel = require("../database/model/productModel");
+const StoreModel = require("../../database/model/storeModel");
+const ProductModel = require("../../database/model/productModel");
 
 const createProduct = async (payload) => {
   const newProduct = await ProductModel.create(payload);
