@@ -1,7 +1,7 @@
-const ReplyRepository = require("../repositories/ReplyRepository");
-const ReplyModel = require("../database/model/replyModel");
-const UserMode = require("../database/model/userModel");
-const CommentModel = require("../database/model/commentModel");
+const ReplyRepository = require("../../repositories/ReplyRepository");
+const ReplyModel = require("../../database/model/replyModel");
+const UserMode = require("../../database/model/userModel");
+const CommentModel = require("../../database/model/commentModel");
 
 const createReply = async (req, res) => {
   try {

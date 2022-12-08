@@ -1,6 +1,6 @@
-const storeRepository = require("../repositories/StoreRepository");
-const StoreModel = require("../database/model/storeModel");
-const UserMode = require("../database/model/userModel");
+const storeRepository = require("../../repositories/StoreRepository");
+const StoreModel = require("../../database/model/storeModel");
+const UserMode = require("../../database/model/userModel");
 
 const createStore = async (req, res) => {
   try {

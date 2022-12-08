@@ -1,7 +1,7 @@
-const CommentRepository = require("../repositories/CommentRepository");
-const PostMode = require("../database/model/postModel");
-const UserMode = require("../database/model/userModel");
-const CommentModel = require("../database/model/commentModel");
+const CommentRepository = require("../../repositories/CommentRepository");
+const PostMode = require("../../database/model/postModel");
+const UserMode = require("../../database/model/userModel");
+const CommentModel = require("../../database/model/commentModel");
 
 const createComment = async (req, res) => {
   try {

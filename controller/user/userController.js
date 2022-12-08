@@ -7,9 +7,9 @@ const {
   getSearchUser,
   updateUser,
   handleGetUserMonthly,
-} = require("../repositories/UserRepository");
-const { hash } = require("../helper/bcrypt");
-const bcrypt = require("../helper/bcrypt");
+} = require("../../repositories/UserRepository");
+const { hash } = require("../../helper/bcrypt");
+const bcrypt = require("../../helper/bcrypt");
 
 const findAllUser = async (req, res) => {
   try {

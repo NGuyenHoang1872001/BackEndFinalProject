@@ -1,7 +1,7 @@
-const UserModel = require("../database/model/userModel");
-const bcrypt = require("../helper/bcrypt");
+const UserModel = require("../../database/model/userModel");
+const bcrypt = require("../../helper/bcrypt");
 const jwt = require("jsonwebtoken");
-const { hash, comparePassword } = require("../helper/bcrypt");
+const { hash, comparePassword } = require("../../helper/bcrypt");
 
 const register = async (req, res) => {
   try {
