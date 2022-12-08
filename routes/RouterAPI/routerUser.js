@@ -1,7 +1,6 @@
 var express = require("express");
 var router = express.Router();
 const authController = require("../../controller/AutherController");
-const postController = require("../../controller/PostController");
 const storeController = require("../../controller/StoreController");
 const productController = require("../../controller/ProductController");
 const userControleer = require("../../controller/UserController");
@@ -9,6 +8,7 @@ const InvoiceController = require("../../controller/InvoiceController");
 const TransactionController = require("../../controller/TransactionController");
 const CommentControler = require("../../controller/CommentController");
 const ReplyController = require("../../controller/ReplyController");
+const postController = require("../../controller/PostController");
 const { route } = require("moongose/routes");
 
 router.post("/register", authController.register);
