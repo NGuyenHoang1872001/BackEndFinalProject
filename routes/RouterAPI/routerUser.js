@@ -8,19 +8,25 @@ const InvoiceController = require("../../controller/InvoiceController");
 const TransactionController = require("../../controller/TransactionController");
 const CommentControler = require("../../controller/CommentController");
 const ReplyController = require("../../controller/ReplyController");
-const postController = require("../../controller/PostController");
+const {
+  createPost,
+  updatePost,
+  getAllPost,
+  deletePost,
+  getOnePost,
+} = require("../../controller/PostController");
 const { route } = require("moongose/routes");
 
 router.post("/register", authController.register);
 
 router.post("/login", authController.login);
 
-router.post("/createPost", postController.createPost);
+router.post("/createPost", createPost);
 
-router.get("/getPost", postController.getAllPost);
-router.put("/updatePost/:postId", postController.updatePost);
-router.delete("/deletePost/:postId", postController.deletePost);
-router.get("/getOnePost/:postId", postController.getOnePost);
+router.get("/getPost", getAllPost);
+router.put("/updatePost/:postId", updatePost);
+router.delete("/deletePost/:postId", deletePost);
+router.get("/getOnePost/:postId", getOnePost);
 
 router.post("/createStore", storeController.createStore);
 router.get("/getStore", storeController.getAllStore);
