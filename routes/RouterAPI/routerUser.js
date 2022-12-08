@@ -1,5 +1,3 @@
-var express = require("express");
-var router = express.Router();
 const authController = require("../../controller/autherController");
 const postController = require("../../controller/postController");
 const storeController = require("../../controller/storeController");
@@ -9,6 +7,8 @@ const InvoiceController = require("../../controller/invoiceController");
 const TransactionController = require("../../controller/TransactionController");
 const CommentControler = require("../../controller/commentController");
 const ReplyController = require("../../controller/replyController");
+var express = require("express");
+var router = express.Router();
 
 router.post("/register", authController.register);
 
