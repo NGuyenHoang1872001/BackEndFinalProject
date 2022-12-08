@@ -63,6 +63,28 @@ const pushAuthorLikePost = async (postId, liked) => {
     return getLike;
   } catch (error) {}
 };
+const pushAuthorReportPost = async (postId, report) => {
+  console.log(
+    "🚀 ~ file: PostRepository.js:67 ~ pushAuthorReportPost ~ report",
+    report
+  );
+  console.log(
+    "🚀 ~ file: PostRepository.js:67 ~ pushAuthorReportPost ~ postId",
+    postId
+  );
+  try {
+    const getReport = PostMode.findByIdAndUpdate(
+      { _id: postId },
+      { $push: { report } }
+    );
+    return getReport;
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: PostRepository.js:74 ~ pushAuthorReportPost ~ error",
+      error
+    );
+  }
+};
 
 const pullAuthorLikePost = async (postId, liked) => {
   try {
@@ -83,4 +105,5 @@ module.exports = {
   getPostbyAuthor,
   pushAuthorLikePost,
   pullAuthorLikePost,
+  pushAuthorReportPost,
 };

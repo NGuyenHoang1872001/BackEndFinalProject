@@ -73,6 +73,10 @@ const getUserFollowing = async (id) => {
 };
 
 const getSearchUser = async (condition, options) => {
+  console.log(
+    "🚀 ~ file: UserRepository.js:76 ~ getSearchUser ~ condition",
+    condition
+  );
   try {
     const findUserName = await UserModel.paginate(condition, options);
     return findUserName;

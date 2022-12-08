@@ -8,6 +8,10 @@ const createPost = async (req, res) => {
     const findUser = await UserMode.findById(author);
     if (!findUser) return res.send(400);
     const payload = { title, cover, author, store };
+    console.log(
+      "🚀 ~ file: PostController.js:11 ~ createPost ~ payload",
+      payload
+    );
 
     const response = await postRepository.createPost(payload);
     return res.send(response);
@@ -101,6 +105,20 @@ const getAuthorLIike = async (req, res) => {
     );
   }
 };
+const getAuthorReport = async (req, res) => {
+  try {
+    const { postId } = req.params;
+    const { report } = req.body;
+
+    const getReport = await postRepository.pushAuthorReportPost(postId, report);
+    res.send(getReport);
+  } catch (error) {
+    console.log(
+      "🚀 ~ file: PostController.js:116 ~ getAuthorReport ~ error",
+      error
+    );
+  }
+};
 const getAuthorUnLike = async (req, res) => {
   try {
     const { postId } = req.params;
@@ -130,4 +148,5 @@ module.exports = {
   getPostByAuthor,
   getAuthorLIike,
   getAuthorUnLike,
+  getAuthorReport,
 };

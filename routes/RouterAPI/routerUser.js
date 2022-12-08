@@ -62,6 +62,7 @@ router.get("/getReply/:commentId", ReplyController.getReplybyComment);
 
 router.put("/getLikedPost/:postId", postController.getAuthorLIike);
 router.put("/getUnLikedPost/:postId", postController.getAuthorUnLike);
+router.put("/getReport/:postId", postController.getAuthorReport);
 router.put("/getStoreFollowing/:storeId", storeController.getFollowingStore);
 router.put(
   "/getStoreUnFollowing/:storeId",
