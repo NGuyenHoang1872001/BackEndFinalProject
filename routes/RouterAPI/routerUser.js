@@ -1,14 +1,14 @@
 var express = require("express");
 var router = express.Router();
-const authController = require("../../controller/AutherController");
-const postController = require("../../controller/PostController");
-const storeController = require("../../controller/StoreController");
-const productController = require("../../controller/ProductController");
-const userControleer = require("../../controller/UserController");
-const InvoiceController = require("../../controller/InvoiceController");
+const authController = require("../../controller/autherController");
+const postController = require("../../controller/postController");
+const storeController = require("../../controller/storeController");
+const productController = require("../../controller/productController");
+const userControleer = require("../../controller/userController");
+const InvoiceController = require("../../controller/invoiceController");
 const TransactionController = require("../../controller/TransactionController");
-const CommentControler = require("../../controller/CommentController");
-const ReplyController = require("../../controller/ReplyController");
+const CommentControler = require("../../controller/commentController");
+const ReplyController = require("../../controller/replyController");
 
 router.post("/register", authController.register);
 
