@@ -44,7 +44,7 @@ const login = async (req, res) => {
       "🚀 ~ file: AutherController.js:42 ~ login ~ invalidPassword",
       invalidPassword
     );
-    if (!invalidPassword) return res.sendStatus(400);
+    if (!invalidPassword) return res.status(400).send("Something wrong");
 
     const payload = {
       id: user._id,
