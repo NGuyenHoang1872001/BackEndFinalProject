@@ -122,7 +122,15 @@ const handleUpdateUser = async (req, res) => {
       role,
       storeId,
     };
+    console.log(
+      "🚀 ~ file: userController.js:118 ~ handleUpdateUser ~ payLoad",
+      payLoad
+    );
     const response = await updateUser(userId, payLoad);
+    console.log(
+      "🚀 ~ file: userController.js:128 ~ handleUpdateUser ~ response",
+      response
+    );
     res.send(response);
   } catch (error) {
     console.log(
